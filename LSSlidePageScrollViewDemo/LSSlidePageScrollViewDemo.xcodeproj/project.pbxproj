@@ -22,6 +22,8 @@
 		5A26664D1EBA048A0045790E /* UIScrollView+LSSlidePageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2666491EBA048A0045790E /* UIScrollView+LSSlidePageScrollView.m */; };
 		5A2666521EBA04A70045790E /* CustomView3Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A26664F1EBA04A70045790E /* CustomView3Controller.m */; };
 		5A2666531EBA04A70045790E /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2666511EBA04A70045790E /* TableViewController.m */; };
+		5A2666561EBACDFB0045790E /* LSBaseNavItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2666551EBACDFB0045790E /* LSBaseNavItem.m */; };
+		5A26665E1EBAF9510045790E /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A26665D1EBAF9510045790E /* UINavigationController+FDFullscreenPopGesture.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,10 @@
 		5A26664F1EBA04A70045790E /* CustomView3Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomView3Controller.m; sourceTree = "<group>"; };
 		5A2666501EBA04A70045790E /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		5A2666511EBA04A70045790E /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		5A2666541EBACDFB0045790E /* LSBaseNavItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBaseNavItem.h; sourceTree = "<group>"; };
+		5A2666551EBACDFB0045790E /* LSBaseNavItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSBaseNavItem.m; sourceTree = "<group>"; };
+		5A26665C1EBAF9510045790E /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
+		5A26665D1EBAF9510045790E /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +127,7 @@
 		5A26660A1EBA045B0045790E /* LSSlidePageScrollViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				5A26665B1EBAF9510045790E /* FDFullscreenPopGesture */,
 				5A2666411EBA048A0045790E /* LSSlidePageScrollView */,
 				5A26664E1EBA04A70045790E /* CustomView3Controller.h */,
 				5A26664F1EBA04A70045790E /* CustomView3Controller.m */,
@@ -171,6 +178,8 @@
 			children = (
 				5A2666421EBA048A0045790E /* LSBasePageTabbar.h */,
 				5A2666431EBA048A0045790E /* LSBasePageTabbar.m */,
+				5A2666541EBACDFB0045790E /* LSBaseNavItem.h */,
+				5A2666551EBACDFB0045790E /* LSBaseNavItem.m */,
 				5A2666441EBA048A0045790E /* LSSlidePageScrollView.h */,
 				5A2666451EBA048A0045790E /* LSSlidePageScrollView.m */,
 				5A2666461EBA048A0045790E /* LSSlidePageScrollViewController.h */,
@@ -179,6 +188,15 @@
 				5A2666491EBA048A0045790E /* UIScrollView+LSSlidePageScrollView.m */,
 			);
 			path = LSSlidePageScrollView;
+			sourceTree = "<group>";
+		};
+		5A26665B1EBAF9510045790E /* FDFullscreenPopGesture */ = {
+			isa = PBXGroup;
+			children = (
+				5A26665C1EBAF9510045790E /* UINavigationController+FDFullscreenPopGesture.h */,
+				5A26665D1EBAF9510045790E /* UINavigationController+FDFullscreenPopGesture.m */,
+			);
+			path = FDFullscreenPopGesture;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,8 +338,10 @@
 				5A2666131EBA045B0045790E /* ViewController.m in Sources */,
 				5A26664D1EBA048A0045790E /* UIScrollView+LSSlidePageScrollView.m in Sources */,
 				5A2666101EBA045B0045790E /* AppDelegate.m in Sources */,
+				5A2666561EBACDFB0045790E /* LSBaseNavItem.m in Sources */,
 				5A2666531EBA04A70045790E /* TableViewController.m in Sources */,
 				5A2666521EBA04A70045790E /* CustomView3Controller.m in Sources */,
+				5A26665E1EBAF9510045790E /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				5A26664A1EBA048A0045790E /* LSBasePageTabbar.m in Sources */,
 				5A26664B1EBA048A0045790E /* LSSlidePageScrollView.m in Sources */,
 				5A2666191EBA045B0045790E /* LSSlidePageScrollViewDemo.xcdatamodeld in Sources */,
@@ -477,6 +497,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 89GGHNDH6Y;
 				INFOPLIST_FILE = LSSlidePageScrollViewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qyonline.LSSlidePageScrollViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -489,6 +510,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 89GGHNDH6Y;
 				INFOPLIST_FILE = LSSlidePageScrollViewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qyonline.LSSlidePageScrollViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -564,6 +586,7 @@
 				5A26663A1EBA045B0045790E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A26663B1EBA045B0045790E /* Build configuration list for PBXNativeTarget "LSSlidePageScrollViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -572,6 +595,7 @@
 				5A26663D1EBA045B0045790E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A26663E1EBA045B0045790E /* Build configuration list for PBXNativeTarget "LSSlidePageScrollViewDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -580,6 +604,7 @@
 				5A2666401EBA045B0045790E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

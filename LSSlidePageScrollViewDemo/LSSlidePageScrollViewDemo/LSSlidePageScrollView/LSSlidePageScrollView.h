@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LSBasePageTabbar.h"
+#import "LSBaseNavItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -69,6 +70,8 @@ typedef NS_ENUM(NSInteger, LSPageTabBarState) {
 
 @property (nonatomic, strong, nullable) UIView *headerView; // defult nil，don't forget set height
 @property (nonatomic, assign) BOOL parallaxHeaderEffect; // def NO, Parallax effect (弹性视差效果)
+
+@property (nonatomic, strong, nullable) UIView<LSBaseNavItemProtorol> *navItem;
 
 @property (nonatomic, strong, nullable) UIView<LSBasePageTabbarProtocol> *pageTabbar; //defult nil
 @property (nonatomic, assign) BOOL pageTabBarIsStopOnTop;  // default YES, is stop on top

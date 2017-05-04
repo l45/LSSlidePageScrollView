@@ -40,6 +40,9 @@
     [self updateHeaderContentView];
     [self layoutHeaderContentView];
     
+    [self updateNavItem];
+    [self layoutNavItem];
+    
     [self updateFooterView];
     [self layoutFooterView];
     
@@ -47,6 +50,9 @@
     [self layoutPageViews];
     
     [self bringSubviewToFront:_headerContentView];
+    if (_navItem != nil) {
+        [self bringSubviewToFront:_navItem];
+    }
     
     [self addPageViewKeyPathOffsetWithOldIndex:-1 newIndex:_curPageIndex];
 }
@@ -135,6 +141,7 @@
         [view removeObserver:self forKeyPath:@"contentOffset" context:nil];
     }
     
+    [_navItem removeFromSuperview];
     [_headerView removeFromSuperview];
     [_pageTabbar removeFromSuperview];
     _pageTabbar.delegate = nil;
@@ -292,6 +299,58 @@
     }
 }
 
+- (void)updateNavItem
+{
+    if (_navItem != nil) {
+        [self addSubview:_navItem];
+    }
+}
+
+- (void)layoutNavItem
+{
+    if (_navItem == nil) {
+        return;
+    }
+    _navItem.translatesAutoresizingMaskIntoConstraints = false;
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_navItem
+                                                     attribute:NSLayoutAttributeLeft
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeLeft
+                                                    multiplier:1 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_navItem
+                                                     attribute:NSLayoutAttributeTop
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeTop
+                                                    multiplier:1 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_navItem
+                                                     attribute:NSLayoutAttributeRight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeRight
+                                                    multiplier:1 constant:0]];
+    
+    NSLayoutConstraint *heightConstraint = nil;
+    for (NSLayoutConstraint *constraint in _navItem.constraints) {
+        if (constraint.firstAttribute == NSLayoutAttributeHeight) {
+            heightConstraint = constraint;
+            break;
+        }
+    }
+    if (heightConstraint == nil) {
+        [_navItem addConstraint:[NSLayoutConstraint constraintWithItem:_navItem
+                                                             attribute:NSLayoutAttributeHeight
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:nil
+                                                             attribute:NSLayoutAttributeNotAnAttribute
+                                                            multiplier:1
+                                                              constant:_navItem.frame.size.height]];
+    } else {
+        heightConstraint.constant = _navItem.frame.size.height;
+    }
+}
+
 - (void)updateFooterView
 {
     if (_footerView != nil) {
@@ -408,6 +467,11 @@
     }
 
     CGFloat offsetY = pageScrollView.contentOffset.y;
+    if ([self.navItem respondsToSelector:@selector(adjustUIWithCurrent:max:min:)]) {
+        [self.navItem adjustUIWithCurrent:-offsetY max:_headerContentViewHeight
+                                      min:pageTabBarHeight + pageTabBarIsStopOnTop];
+    }
+    
     if (offsetY <= -_headerContentViewHeight) {
         // headerContentView full show
         if (_headerContentYConstraint.constant != 0) {

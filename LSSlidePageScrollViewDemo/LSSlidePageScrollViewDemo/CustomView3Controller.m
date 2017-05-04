@@ -9,7 +9,6 @@
 #import "CustomView3Controller.h"
 #import "TableViewController.h"
 
-
 @interface CustomView3Controller ()
 
 @property (nonatomic, weak) UIButton *backBtn;
@@ -27,6 +26,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = @"基于TYSlidePageScrollView\n喜欢请点赞";
+    
     self.viewControllers =
   @[
     [self creatViewControllerPage:0 itemNum:16],
@@ -36,7 +37,7 @@
     ];
     
     
-    self.slidePageScrollView.pageTabBarStopOnTopHeight = _isNoHeaderView ? 0 : 20;
+    self.slidePageScrollView.pageTabBarStopOnTopHeight = _isNoHeaderView ? 0 : 64;
     self.slidePageScrollView.headerViewScrollEnable = _isNoHeaderView ? NO : YES;
     [self addBackNavButton];
     
@@ -44,21 +45,16 @@
     
     [self addTabPageMenu];
     
+    [self addCustomNavItem];
+    
     [self addFooterView];
     
     [self.slidePageScrollView reloadData];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (BOOL)fd_prefersNavigationBarHidden
 {
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = NO;
+    return true;
 }
 
 - (void)viewWillLayoutSubviews
@@ -146,6 +142,16 @@
     
     _pageBarShareBtn.hidden = !_isNoHeaderView;
     _pageBarBackBtn.hidden = !_isNoHeaderView;
+}
+
+- (void)addCustomNavItem
+{
+    LSCustomNavItemView *navItem = [[LSCustomNavItemView alloc] initWithFrame:CGRectMake(0, 0, self.slidePageScrollView.frame.size.width, 64)];
+    navItem.edgeInset = UIEdgeInsetsMake(20, 8, 0, 8);
+//    [navItem.leftButton addTarget:self action:<#(nonnull SEL)#> forControlEvents:UIControlEventTouchDown];
+//    [navItem.rightButton addTarget:self action:<#(nonnull SEL)#> forControlEvents:UIControlEventTouchDown];
+    navItem.titleLabel.text = self.navigationItem.title;
+    self.slidePageScrollView.navItem = navItem;
 }
 
 - (void)addFooterView

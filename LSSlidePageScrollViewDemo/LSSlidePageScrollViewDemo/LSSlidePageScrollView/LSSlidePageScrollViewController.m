@@ -33,6 +33,7 @@
     _slidePageScrollView = [[LSSlidePageScrollView alloc] initWithFrame:self.view.bounds];
     _slidePageScrollView.delegate = self;
     _slidePageScrollView.dataSource = self;
+    _slidePageScrollView.shouldAutomaticallyForwardAppearanceMethods = true;
     [self.view addSubview:_slidePageScrollView];
 }
 
